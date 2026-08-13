@@ -504,14 +504,14 @@ body {
 }
 
 .tampon-avion {
-    font-size: 36px;
+    font-size: 56px;
     line-height: 1;
 
     margin-bottom: 5px;
 
     color: white;
 
-    transform: rotate(12deg);
+    transform: rotate(-30deg);
 
     filter:
         drop-shadow(0 2px 3px rgba(0, 0, 0, .9));
