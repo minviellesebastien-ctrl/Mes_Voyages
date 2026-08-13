@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#071416">
+
+    <title>Mes Voyages</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="page-voyages">
+
+    <button id="retourVoyages" class="retour retour-voyages" aria-label="Retour">
+        ‹
+    </button>
+
+    <section class="liste-voyages" id="listeVoyages">
+        <!-- Les voyages sont générés ici -->
+    </section>
+
+    <div class="actions-voyages">
+
+        <button id="btnExporter" class="action-voyage">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 16V3"/>
+                <path d="M7 8l5-5 5 5"/>
+                <path d="M5 21h14a2 2 0 0 0 2-2v-5"/>
+                <path d="M3 14v5a2 2 0 0 0 2 2"/>
+            </svg>
+            <span>EXPORTER</span>
+        </button>
+
+        <button id="btnImporter" class="action-voyage">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3v13"/>
+                <path d="M7 11l5 5 5-5"/>
+                <path d="M5 21h14a2 2 0 0 0 2-2v-5"/>
+                <path d="M3 14v5a2 2 0 0 0 2 2"/>
+            </svg>
+            <span>IMPORTER</span>
+        </button>
+
+    </div>
+
+<button id="btnEffacerTests">
+    🧹 Effacer les données de test
+</button>
+    
+    <input
+        id="fichierImport"
+        type="file"
+        accept=".json,application/json"
+        hidden
+    >
+
+</main>
+
+<script src="voyages.js?v=5"></script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#071416">
+
+    <title>Mes Voyages</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="accueil">
+
+        <!-- Prochain voyage -->
+        <section id="prochainVoyage" class="prochain-voyage">
+
+            <!-- Affiché lorsqu'aucun voyage n'est prévu -->
+            <div id="voyageVide" class="voyage-vide">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/>
+                </svg>
+
+            </div>
+
+            <!-- Future photo du prochain voyage -->
+            <img
+                id="photoProchainVoyage"
+                class="photo-voyage"
+                src=""
+                alt=""
+                hidden
+            >
+
+            <div id="tamponVoyage" class="tampon-voyage" hidden>
+    <span class="tampon-avion">✈</span>
+    <span id="tamponDate"></span>
+            </div>
+
+<div id="infosProchainVoyage" class="infos-prochain-voyage" hidden>
+
+    <div class="info-voyage">
+        <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9M12 3c-3 3-4 6-4 9s1 6 4 9"/>
+        </svg>
+
+        <span id="infoPays"></span>
+    </div>
+
+    <div class="info-voyage">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11z"/>
+            <circle cx="12" cy="10" r="2"/>
+        </svg>
+
+        <span id="infoVille"></span>
+    </div>
+
+    <div class="info-voyage">
+        <svg viewBox="0 0 24 24">
+            <rect x="3" y="5" width="18" height="16" rx="2"/>
+            <path d="M7 3v4M17 3v4M3 10h18"/>
+        </svg>
+
+        <span id="infoDate"></span>
+    </div>
+
+</div>
+            
+        </section>
+
+
+        <!-- Mes voyages -->
+        <button id="btnVoyages" class="bouton-image bouton-voyages">
+            <img src="btn-voyages.png" alt="Mes voyages">
+        </button>
+
+
+        <!-- Ajouter -->
+        <button id="btnAjouter" class="bouton-image bouton-ajouter">
+            <img src="btn-ajouter.png" alt="Ajouter un voyage">
+        </button>
+
+    </main>
+
+    <script src="script.js?v=5"></script>
+
+</body>
+</html>

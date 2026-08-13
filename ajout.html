@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#071416">
+
+    <title>Ajouter un voyage</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="page-ajout">
+
+    <header class="topbar">
+        <button id="retour" class="retour">‹</button>
+        <h1>Ajouter un voyage</h1>
+    </header>
+
+    <form id="formVoyage" class="form-voyage">
+
+        <div class="photo-section">
+
+    <span class="photo-titre">PHOTO PRINCIPALE</span>
+
+    <label for="photo" class="choisir-photo">
+        CHOISIR UNE PHOTO
+    </label>
+
+    <input
+        id="photo"
+        type="file"
+        accept="image/*"
+        hidden
+    >
+
+</div>
+
+<div id="apercuPhoto" class="apercu-photo">
+    <span>Aucune photo</span>
+</div>
+
+        <label>
+            PAYS
+            <input
+                id="pays"
+                type="text"
+                placeholder="Ex : Italie"
+                required
+            >
+        </label>
+
+        <label>
+            VILLE / DESTINATION
+            <input
+                id="ville"
+                type="text"
+                placeholder="Ex : Manarola"
+            >
+        </label>
+
+        <label>
+    DATE
+    <input
+        id="date"
+        type="text"
+        placeholder="Ex : Août 2026"
+        maxlength="30"
+        required
+    >
+</label>
+
+        <button type="submit" class="enregistrer">
+            ENREGISTRER
+        </button>
+
+    </form>
+
+</main>
+
+<script src="ajout.js"></script>
+
+</body>
+</html>
