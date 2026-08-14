@@ -6,17 +6,6 @@ const btnExporter = document.getElementById("btnExporter");
 const btnImporter = document.getElementById("btnImporter");
 const fichierImport = document.getElementById("fichierImport");
 
-const btnEffacerTests = document.getElementById("btnEffacerTests");
-
-btnEffacerTests.addEventListener("click", () => {
-    localStorage.removeItem("mes-voyages");
-    indexedDB.deleteDatabase("mes-voyages-db");
-
-    location.reload();
-});
-
-
-
 /* =========================
    RETOUR
 ========================= */
