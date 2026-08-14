@@ -507,7 +507,7 @@ body {
 
     color: white;
 
-    transform: rotate(-17deg);
+    transform: rotate(-15deg);
 
     filter:
         drop-shadow(0 2px 3px rgba(0, 0, 0, .9));
@@ -516,7 +516,7 @@ body {
 #tamponDate {
     max-width: 82px;
     color: white;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 800;
 
     letter-spacing: 1px;
