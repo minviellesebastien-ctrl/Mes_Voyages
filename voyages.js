@@ -165,7 +165,10 @@ async function creerCarte(voyage) {
 
     btnSupprimer.className = "btn-supprimer-voyage";
     btnSupprimer.type = "button";
-    btnSupprimer.setAttribute("aria-label", "Supprimer ce voyage");
+    btnSupprimer.setAttribute(
+        "aria-label",
+        "Supprimer ce voyage"
+    );
 
     btnSupprimer.innerHTML = `
         <svg viewBox="0 0 24 24">
@@ -182,10 +185,6 @@ async function creerCarte(voyage) {
 
     return carte;
 }
-    
-    return carte;
-}
-
 
 function fichierPhotoTexte(voyage) {
     return voyage.aPhotos === false ? "0 photos" : "1 photo";
