@@ -161,6 +161,28 @@ async function creerCarte(voyage) {
     carte.appendChild(contenu);
     carte.appendChild(signet);
 
+    const btnSupprimer = document.createElement("button");
+
+    btnSupprimer.className = "btn-supprimer-voyage";
+    btnSupprimer.type = "button";
+    btnSupprimer.setAttribute("aria-label", "Supprimer ce voyage");
+
+    btnSupprimer.innerHTML = `
+        <svg viewBox="0 0 24 24">
+            <path d="M6 6L18 18M18 6L6 18"/>
+        </svg>
+    `;
+
+    btnSupprimer.addEventListener("click", (e) => {
+        e.stopPropagation();
+        afficherConfirmationSuppression(voyage);
+    });
+
+    carte.appendChild(btnSupprimer);
+
+    return carte;
+}
+    
     return carte;
 }
 
@@ -168,25 +190,6 @@ async function creerCarte(voyage) {
 function fichierPhotoTexte(voyage) {
     return voyage.aPhotos === false ? "0 photos" : "1 photo";
 }
-
-const btnSupprimer = document.createElement("button");
-
-btnSupprimer.className = "btn-supprimer-voyage";
-btnSupprimer.type = "button";
-btnSupprimer.setAttribute("aria-label", "Supprimer ce voyage");
-
-btnSupprimer.innerHTML = `
-    <svg viewBox="0 0 24 24">
-        <path d="M6 6L18 18M18 6L6 18"/>
-    </svg>
-`;
-
-btnSupprimer.addEventListener("click", (e) => {
-    e.stopPropagation();
-    afficherConfirmationSuppression(voyage);
-});
-
-carte.appendChild(btnSupprimer);
 
 /* =========================
    AFFICHER LES VOYAGES
