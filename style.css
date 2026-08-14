@@ -844,7 +844,7 @@ body {
 .actions-voyages {
     position: absolute;
     left: 4%;
-    bottom: 18px;
+    bottom: 75px;
     display: flex;
     gap: 13px;
     width: 92%;
