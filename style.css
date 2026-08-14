@@ -420,11 +420,8 @@ body {
 
     border: 1px solid rgba(25, 203, 187, .4);
     border-radius: 20px;
-
     background: #102123;
-
     color: white;
-
     font-size: 15px;
     font-weight: 600;
 
@@ -506,7 +503,6 @@ body {
 .tampon-avion {
     font-size: 56px;
     line-height: 1;
-
     margin-bottom: 5px;
 
     color: white;
@@ -519,9 +515,7 @@ body {
 
 #tamponDate {
     max-width: 82px;
-
     color: white;
-
     font-size: 11px;
     font-weight: 800;
 
@@ -539,7 +533,6 @@ body {
 
     left: 20px;
     bottom: 18px;
-
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -551,7 +544,6 @@ body {
     display: flex;
     align-items: center;
     gap: 9px;
-
     color: white;
 
     font-family: "Trebuchet MS", Arial, sans-serif;
@@ -657,12 +649,9 @@ body {
     gap: 13px;
 
     width: 92%;
-
     overflow-y: auto;
     overflow-x: hidden;
-
     padding-bottom: 10px;
-
     scrollbar-width: none;
 }
 
@@ -672,7 +661,6 @@ body {
 
 .carte-voyage {
     position: relative;
-
     display: flex;
 
     width: 100%;
@@ -955,20 +943,21 @@ body {
 
     padding: 0;
 
-    border: 1px solid rgba(25, 203, 187, .45);
+    border: 1px solid rgba(255, 255, 255, .45);
     border-radius: 50%;
 
-    background: rgba(5, 25, 27, .75);
+    background: rgba(5, 25, 27, .85);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    z-index: 10;
+
     cursor: pointer;
 
-    -webkit-tap-highlight-color: transparent;
-
-    z-index: 5;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .btn-supprimer-voyage svg {
@@ -976,11 +965,8 @@ body {
     height: 13px;
 
     fill: none;
-
-    stroke: rgba(255, 255, 255, .85);
-
+    stroke: white;
     stroke-width: 2;
-
     stroke-linecap: round;
 }
     .signet-voyage {
