@@ -2,22 +2,23 @@ const CACHE_NAME = "mes-voyages-v1";
 
 const FILES = [
     "index.html",
+    "ajout.html",
     "voyages.html",
-    "ajouter.html",
     "style.css",
     "script.js",
+    "ajout.js",
     "voyages.js",
-    "ajouter.js",
     "fond.png",
-    "icon-192.png",
-    "icon-512.png"
+    "btn-ajouter.png",
+    "btn-voyages.png",
+    "icone-192.png",
+    "icone-512.png",
+    "manifest.webmanifest"
 ];
 
 self.addEventListener("install", event => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then(cache => {
-            return cache.addAll(FILES);
-        })
+        caches.open(CACHE_NAME).then(cache => cache.addAll(FILES))
     );
 });
 
