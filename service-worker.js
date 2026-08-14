@@ -5,12 +5,10 @@ const FILES = [
     "voyages.html",
     "ajouter.html",
     "style.css",
-    "style-ajouter.css",
     "index.js",
     "voyages.js",
     "ajouter.js",
     "fond.png",
-    "fond2.png",
     "icon-192.png",
     "icon-512.png"
 ];
