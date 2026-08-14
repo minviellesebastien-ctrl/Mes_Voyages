@@ -5,7 +5,7 @@ const FILES = [
     "voyages.html",
     "ajouter.html",
     "style.css",
-    "index.js",
+    "script.js",
     "voyages.js",
     "ajouter.js",
     "fond.png",
