@@ -932,32 +932,24 @@ body {
         flex-basis: 18px;
     }
 
-    .btn-supprimer-voyage {
-    position: absolute;
+    .btn-supprimer-voyage{
+    position:absolute;
+    right:8px;
+    bottom:8px;
+    width:22px;
+    height:22px;
+    padding:0;
+    border:1px solid white;
+    border-radius:50%;
+    background:#092326;
+    font-size:0;
+}
 
-    right: 8px;
-    bottom: 8px;
-
-    width: 24px;
-    height: 24px;
-
-    padding: 0;
-
-    border: 1px solid rgba(255, 255, 255, .45);
-    border-radius: 50%;
-
-    background: rgba(5, 25, 27, .85);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    z-index: 10;
-
-    cursor: pointer;
-
-    appearance: none;
-    -webkit-appearance: none;
+.btn-supprimer-voyage::before{
+    content:"×";
+    color:white;
+    font-size:18px;
+    line-height:20px;
 }
 
 .btn-supprimer-voyage svg {
