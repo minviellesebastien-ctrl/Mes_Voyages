@@ -490,10 +490,6 @@ function afficherConfirmationSuppression(voyage) {
                 Supprimer ce voyage ?
             </div>
 
-            <div class="popup-message">
-                Cette action est définitive.
-            </div>
-
             <div class="popup-boutons">
 
                 <button class="popup-annuler">
