@@ -474,3 +474,91 @@ fichierImport.addEventListener("change", async () => {
 
 
 afficherVoyages();
+
+function afficherConfirmationSuppression(voyage) {
+
+    const overlay = document.createElement("div");
+
+    overlay.className = "popup-suppression";
+
+    overlay.innerHTML = `
+        <div class="popup-suppression-contenu">
+
+            <div class="popup-titre">
+                Supprimer ce voyage ?
+            </div>
+
+            <div class="popup-message">
+                Cette action est définitive.
+            </div>
+
+            <div class="popup-boutons">
+
+                <button class="popup-annuler">
+                    ANNULER
+                </button>
+
+                <button class="popup-confirmer">
+                    SUPPRIMER
+                </button>
+
+            </div>
+
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    overlay.querySelector(".popup-annuler")
+        .addEventListener("click", () => {
+            overlay.remove();
+        });
+
+    overlay.querySelector(".popup-confirmer")
+        .addEventListener("click", async () => {
+
+            await supprimerVoyage(voyage.id);
+
+            overlay.remove();
+
+            afficherVoyages();
+        });
+}
+
+async function supprimerVoyage(id) {
+
+    const voyages =
+        JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+    const nouveauxVoyages =
+        voyages.filter(voyage => voyage.id !== id);
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(nouveauxVoyages)
+    );
+
+    /* Suppression de la photo associée */
+
+    try {
+
+        const db = await ouvrirDB();
+
+        await new Promise((resolve, reject) => {
+
+            const transaction =
+                db.transaction("photos", "readwrite");
+
+            const store =
+                transaction.objectStore("photos");
+
+            const request = store.delete(id);
+
+            request.onsuccess = resolve;
+            request.onerror = () => reject(request.error);
+        });
+
+    } catch (erreur) {
+        console.log("Photo non supprimée :", erreur);
+    }
+}
