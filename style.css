@@ -197,7 +197,14 @@ body {
 }
 
 .bouton-image:active {
-    transform: scale(.94);
+    animation: rebond-bouton .35s ease;
+}
+
+@keyframes rebond-bouton {
+    0%   { transform: scale(1); }
+    35%  { transform: scale(.88); }
+    65%  { transform: scale(1.06); }
+    100% { transform: scale(1); }
 }
 
 /* =========================
@@ -347,7 +354,7 @@ body {
 }
 
 .choisir-photo:active {
-    transform: scale(.98);
+    animation: rebond-bouton .35s ease;
     border-color: #19cbbb;
 }
 
@@ -401,7 +408,7 @@ body {
 
 
 .enregistrer:active {
-    transform: scale(.97);
+    animation: rebond-bouton .35s ease;
 }
 
 /* =========================
@@ -885,7 +892,7 @@ body {
 }
 
 .action-voyage:active {
-    transform: scale(.97);
+    animation: rebond-bouton .35s ease;
     background: rgba(25, 203, 187, .10);
 }
 
