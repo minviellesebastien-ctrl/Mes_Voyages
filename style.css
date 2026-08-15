@@ -668,9 +668,9 @@ body {
     display: flex;
 
     width: 100%;
-    height: 140px;
-    min-height: 140px;
-    max-height: 140px;
+    height: 160px;
+    min-height: 160px;
+    max-height: 160px;
 
     overflow: hidden;
 
@@ -695,7 +695,7 @@ body {
 .photo-carte {
     width: 45%;
     min-width: 45%;
-    height: 140px;
+    height: 160px;
     flex-shrink: 0;
     overflow: hidden;
 
