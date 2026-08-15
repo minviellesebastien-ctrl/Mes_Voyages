@@ -66,6 +66,81 @@ function ouvrirDB() {
    ENREGISTRER PHOTO
 ========================= */
 
+async function compresserPhoto(fichier) {
+
+    const MAX_SIZE = 1200;
+    const QUALITE = 0.82;
+
+    return new Promise((resolve, reject) => {
+
+        const image = new Image();
+        const url = URL.createObjectURL(fichier);
+
+        image.onload = () => {
+
+            let largeur = image.width;
+            let hauteur = image.height;
+
+            if (largeur > MAX_SIZE || hauteur > MAX_SIZE) {
+
+                if (largeur > hauteur) {
+                    hauteur = Math.round(hauteur * MAX_SIZE / largeur);
+                    largeur = MAX_SIZE;
+                } else {
+                    largeur = Math.round(largeur * MAX_SIZE / hauteur);
+                    hauteur = MAX_SIZE;
+                }
+            }
+
+            const canvas = document.createElement("canvas");
+
+            canvas.width = largeur;
+            canvas.height = hauteur;
+
+            const ctx = canvas.getContext("2d");
+
+            ctx.drawImage(
+                image,
+                0,
+                0,
+                largeur,
+                hauteur
+            );
+
+            canvas.toBlob(
+                blob => {
+
+                    URL.revokeObjectURL(url);
+
+                    if (!blob) {
+                        reject(new Error("Compression impossible"));
+                        return;
+                    }
+
+                    resolve(
+                        new File(
+                            [blob],
+                            "photo-voyage.jpg",
+                            {
+                                type: "image/jpeg"
+                            }
+                        )
+                    );
+                },
+                "image/jpeg",
+                QUALITE
+            );
+        };
+
+        image.onerror = () => {
+            URL.revokeObjectURL(url);
+            reject(new Error("Image impossible à charger"));
+        };
+
+        image.src = url;
+    });
+}
+
 async function enregistrerPhoto(id, fichier) {
 
     if (!fichier) return;
@@ -135,9 +210,10 @@ formVoyage.addEventListener("submit", async (e) => {
 
     const fichier = photoInput.files[0];
 
-    if (fichier) {
-        await enregistrerPhoto(id, fichier);
-    }
+if (fichier) {
+    const photoCompressee = await compresserPhoto(fichier);
+    await enregistrerPhoto(id, photoCompressee);
+}
 
 
     /* Message pour l'accueil */
