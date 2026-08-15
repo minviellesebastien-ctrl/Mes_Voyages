@@ -650,7 +650,7 @@ body {
     left: 4%;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 24px;
 
     width: 92%;
     overflow-y: auto;
@@ -668,9 +668,9 @@ body {
     display: flex;
 
     width: 100%;
-    height: 160px;
-    min-height: 160px;
-    max-height: 160px;
+    height: 158px;
+    min-height: 158px;
+    max-height: 158px;
 
     overflow: hidden;
 
@@ -695,7 +695,7 @@ body {
 .photo-carte {
     width: 45%;
     min-width: 45%;
-    height: 160px;
+    height: 158px;
     flex-shrink: 0;
     overflow: hidden;
 
