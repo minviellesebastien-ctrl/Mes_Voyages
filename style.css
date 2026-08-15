@@ -646,11 +646,11 @@ body {
 .liste-voyages {
     position: absolute;
     top: 175px;
-    bottom: 100px;
+    bottom: 145px;
     left: 4%;
     display: flex;
     flex-direction: column;
-    gap: 13px;
+    gap: 18px;
 
     width: 92%;
     overflow-y: auto;
