@@ -904,12 +904,8 @@ body {
     height: 20px;
     padding: 0;
     border: 0;
-    border-radius: 50%;
-    background: #19cbbb;
-    color: #071416;
+    background: transparent;
     font-size: 0;
-    box-shadow: none;
-    filter: none;
 }
 
 .btn-supprimer-voyage::before {
@@ -1034,10 +1030,7 @@ body {
 }
 
 .popup-confirmer {
-    color: white;
-
+    color: #071416;
     background: #19cbbb;
-
-    box-shadow:
-        0 4px 12px rgba(25, 203, 187, .25);
+    box-shadow: none;
 }
