@@ -904,8 +904,12 @@ body {
     height: 20px;
     padding: 0;
     border: 0;
-    background: transparent;
+    border-radius: 50%;
+    background: #19cbbb;
+    color: #071416;
     font-size: 0;
+    box-shadow: none;
+    filter: none;
 }
 
 .btn-supprimer-voyage::before {
