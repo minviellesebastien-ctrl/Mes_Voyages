@@ -1,0 +1,1274 @@
+/* =========================================================
+   MES VOYAGES — REFONTE V1
+   Ambiance : carnet de voyage / passeport / souvenirs
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #172321;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+.accueil,
+.page-ajout {
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PAGE ACCUEIL
+========================================================= */
+
+.accueil {
+    position: relative;
+
+    width: 100%;
+    max-width: 500px;
+    min-height: 100dvh;
+
+    margin: auto;
+
+    background-image: url("fond.png");
+    background-size: 100% auto;
+    background-position: center -45px;
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PROCHAIN VOYAGE
+========================================================= */
+
+.prochain-voyage {
+    position: relative;
+
+    width: 86%;
+    aspect-ratio: .95;
+
+    margin: 145px auto 0;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background: #172321;
+
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, .38),
+        0 3px 8px rgba(0, 0, 0, .18);
+}
+
+
+/* =========================================================
+   ÉTAT VIDE
+========================================================= */
+
+.voyage-vide {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(246, 240, 224, .08),
+            rgba(255, 255, 255, .025)
+        );
+}
+
+.voyage-vide svg {
+    width: 32%;
+    height: auto;
+
+    fill: #e8d8b8;
+
+    opacity: .85;
+
+    filter:
+        drop-shadow(0 3px 6px rgba(0, 0, 0, .35));
+}
+
+
+/* =========================================================
+   PHOTO DU PROCHAIN VOYAGE
+========================================================= */
+
+.photo-voyage {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+        saturate(1.05)
+        contrast(1.04)
+        brightness(.86);
+
+    transform: scale(1.025);
+}
+
+
+/* voile général sur la photo */
+
+.prochain-voyage::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, .03) 0%,
+            rgba(0, 0, 0, .02) 42%,
+            rgba(10, 20, 18, .78) 100%
+        );
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .12),
+        inset 0 -25px 45px rgba(0, 0, 0, .28);
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   TAMPON VOYAGE
+========================================================= */
+
+.tampon-voyage {
+    position: absolute;
+
+    right: 17px;
+    top: 17px;
+
+    width: 104px;
+    height: 104px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid rgba(248, 239, 218, .92);
+    border-radius: 50%;
+
+    background: rgba(38, 48, 42, .28);
+
+    color: #f8efda;
+
+    transform: rotate(-11deg);
+
+    opacity: .94;
+
+    text-transform: uppercase;
+
+    z-index: 3;
+
+    box-shadow:
+        inset 0 0 0 4px rgba(248, 239, 218, .10),
+        0 3px 10px rgba(0, 0, 0, .35);
+
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, .8);
+}
+
+.tampon-voyage::before {
+    content: "";
+
+    position: absolute;
+    inset: 6px;
+
+    border: 1px dashed rgba(248, 239, 218, .78);
+    border-radius: 50%;
+}
+
+.tampon-avion {
+    margin-bottom: 4px;
+
+    color: #f8efda;
+
+    font-size: 52px;
+    line-height: 1;
+
+    transform: rotate(-15deg);
+
+    filter:
+        drop-shadow(0 2px 3px rgba(0, 0, 0, .7));
+}
+
+#tamponDate {
+    max-width: 82px;
+
+    color: #f8efda;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    line-height: 1.2;
+    text-align: center;
+
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, .9);
+}
+
+
+/* =========================================================
+   INFORMATIONS DU PROCHAIN VOYAGE
+========================================================= */
+
+.infos-prochain-voyage {
+    position: absolute;
+
+    left: 20px;
+    bottom: 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    z-index: 3;
+}
+
+.info-voyage {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    color: #fff;
+
+    font-family:
+        "Trebuchet MS",
+        Arial,
+        sans-serif;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    letter-spacing: .25px;
+
+    text-shadow:
+        0 2px 5px rgba(0, 0, 0, .9);
+}
+
+.info-voyage svg {
+    width: 20px;
+    height: 20px;
+
+    flex-shrink: 0;
+
+    fill: none;
+
+    stroke: #e5c98c;
+
+    stroke-width: 2;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    filter:
+        drop-shadow(0 1px 3px rgba(0, 0, 0, .65));
+}
+
+
+/* =========================================================
+   BOUTONS IMAGE
+========================================================= */
+
+.bouton-image {
+    display: block;
+
+    padding: 0;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transition:
+        transform .15s ease,
+        filter .15s ease;
+}
+
+.bouton-image img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+}
+
+
+/* =========================================================
+   MES VOYAGES
+========================================================= */
+
+.bouton-voyages {
+    width: 88%;
+
+    margin-top: 20px;
+
+    filter:
+        drop-shadow(0 5px 8px rgba(0, 0, 0, .28));
+}
+
+
+/* =========================================================
+   AJOUTER
+========================================================= */
+
+.bouton-ajouter {
+    width: 24%;
+
+    margin-top: 18px;
+
+    filter:
+        drop-shadow(0 4px 7px rgba(0, 0, 0, .25));
+}
+
+
+/* =========================================================
+   ANIMATION BOUTONS
+========================================================= */
+
+.bouton-image:active {
+    animation: rebond-bouton .35s ease;
+}
+
+@keyframes rebond-bouton {
+    0% {
+        transform: scale(1);
+    }
+
+    35% {
+        transform: scale(.90);
+    }
+
+    65% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   PAGE AJOUTER
+========================================================= */
+
+.page-ajout {
+    width: 100%;
+    max-width: 500px;
+    min-height: 100dvh;
+
+    margin: auto;
+
+    padding: 25px 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #172321 0%,
+            #202c28 100%
+        );
+
+    color: #f8efda;
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 35px;
+}
+
+.topbar h1 {
+    margin: 0;
+
+    color: #f8efda;
+
+    font-size: 23px;
+    font-weight: 700;
+
+    letter-spacing: .4px;
+}
+
+.retour {
+    position: absolute;
+
+    left: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #e5c98c;
+
+    font-size: 45px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.retour:focus,
+.retour:active {
+    outline: none;
+    background: transparent;
+}
+
+
+/* =========================================================
+   FORMULAIRE
+========================================================= */
+
+.form-voyage {
+    display: flex;
+    flex-direction: column;
+
+    gap: 23px;
+
+    margin-top: 45px;
+}
+
+.form-voyage label {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+
+    color: #e5c98c;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+}
+
+.form-voyage input[type="text"],
+.form-voyage input[type="date"] {
+    width: 100%;
+    height: 50px;
+
+    padding: 0 17px;
+
+    border: 1px solid rgba(229, 201, 140, .35);
+
+    border-radius: 13px;
+
+    outline: none;
+
+    background: rgba(248, 239, 218, .07);
+
+    color: #fff;
+
+    font-size: 16px;
+}
+
+.form-voyage input:focus {
+    border-color: #e5c98c;
+
+    box-shadow:
+        0 0 0 2px rgba(229, 201, 140, .08);
+}
+
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.photo-section {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.photo-titre {
+    color: #e5c98c;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+}
+
+.choisir-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 50px;
+
+    border: 1px solid rgba(229, 201, 140, .35);
+
+    border-radius: 13px;
+
+    background: rgba(248, 239, 218, .07);
+
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    letter-spacing: .5px;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.choisir-photo:active {
+    animation: rebond-bouton .35s ease;
+
+    border-color: #e5c98c;
+}
+
+.apercu-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 145px;
+
+    overflow: hidden;
+
+    border: 1px dashed rgba(229, 201, 140, .45);
+
+    border-radius: 16px;
+
+    background: rgba(0, 0, 0, .16);
+
+    color: rgba(255, 255, 255, .45);
+}
+
+.apercu-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   ENREGISTRER
+========================================================= */
+
+.enregistrer {
+    height: 55px;
+
+    margin-top: 5px;
+
+    border: 0;
+
+    border-radius: 14px;
+
+    background: #e5c98c;
+
+    color: #202c28;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, .18);
+}
+
+.enregistrer:active {
+    animation: rebond-bouton .35s ease;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast {
+    position: fixed;
+
+    left: 50%;
+    bottom: 35px;
+
+    transform: translate(-50%, 20px);
+
+    padding: 12px 20px;
+
+    border: 1px solid rgba(229, 201, 140, .40);
+
+    border-radius: 20px;
+
+    background: #26332f;
+
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    z-index: 1000;
+
+    transition:
+        opacity .3s,
+        transform .3s;
+
+    box-shadow:
+        0 6px 25px rgba(0, 0, 0, .4);
+}
+
+.toast.show {
+    opacity: 1;
+
+    transform: translate(-50%, 0);
+}
+
+.toast .check {
+    color: #e5c98c;
+
+    font-weight: 800;
+
+    margin-right: 6px;
+}
+
+
+/* =========================================================
+   PAGE MES VOYAGES
+========================================================= */
+
+.page-voyages {
+    position: relative;
+
+    width: 100%;
+    max-width: 500px;
+    height: 100dvh;
+
+    margin: auto;
+
+    padding: 0;
+
+    background-image: url("fond.png");
+    background-size: 100% auto;
+    background-position: center -45px;
+    background-repeat: no-repeat;
+
+    color: white;
+
+    overflow: hidden;
+}
+
+.page-voyages::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   RETOUR
+========================================================= */
+
+.retour-voyages {
+    top: 30px;
+    left: 22px;
+
+    width: 42px;
+    height: 48px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 0;
+
+    color: white;
+
+    font-size: 42px;
+    line-height: 45px;
+
+    background: transparent;
+}
+
+.retour-voyages:active {
+    transform: translateX(-2px) scale(.96);
+}
+
+
+/* =========================================================
+   LISTE
+========================================================= */
+
+.liste-voyages {
+    position: absolute;
+
+    top: 175px;
+    bottom: 140px;
+    left: 4%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+
+    width: 92%;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding-bottom: 10px;
+
+    scrollbar-width: none;
+}
+
+.liste-voyages::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   CARTE VOYAGE
+========================================================= */
+
+.carte-voyage {
+    position: relative;
+
+    display: flex;
+
+    width: 100%;
+    height: 158px;
+    min-height: 158px;
+    max-height: 158px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(248, 239, 218, .22);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(27, 38, 34, .97),
+            rgba(35, 47, 42, .94)
+        );
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, .30);
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   PHOTO CARTE
+========================================================= */
+
+.photo-carte {
+    width: 45%;
+    min-width: 45%;
+    height: 158px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(229, 201, 140, .10),
+            rgba(255, 255, 255, .02)
+        );
+}
+
+.photo-carte img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 0 13px 13px 0;
+
+    filter:
+        saturate(.95)
+        contrast(1)
+        brightness(.90);
+}
+
+.photo-carte img.photo-manquante {
+    opacity: 0;
+}
+
+
+/* =========================================================
+   CONTENU CARTE
+========================================================= */
+
+.contenu-carte {
+    position: relative;
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 12px 38px 9px 15px;
+}
+
+.contenu-carte h2 {
+    margin: 0 0 14px;
+
+    color: #f2dfb4;
+
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        "Brush Script MT",
+        cursive;
+
+    font-size: 29px;
+    font-weight: 500;
+
+    line-height: 1;
+
+    text-shadow:
+        0 2px 5px rgba(0, 0, 0, .5);
+}
+
+
+/* =========================================================
+   LIGNES VOYAGE
+========================================================= */
+
+.ligne-voyage {
+    display: flex;
+    align-items: center;
+
+    min-height: 22px;
+
+    gap: 7px;
+
+    color: #fff;
+
+    font-family:
+        "Trebuchet MS",
+        Arial,
+        sans-serif;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, .75);
+}
+
+.ligne-voyage + .ligne-voyage {
+    margin-top: 3px;
+}
+
+.ligne-voyage svg {
+    width: 22px;
+    height: 22px;
+
+    flex: 0 0 16px;
+
+    fill: none;
+
+    stroke: #e5c98c;
+
+    stroke-width: 2;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   SIGNET
+========================================================= */
+
+.signet-voyage {
+    position: absolute;
+
+    top: -1px;
+    right: 18px;
+
+    width: 27px;
+    height: 40px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ead39c 0%,
+            #c6a968 100%
+        );
+
+    filter:
+        drop-shadow(0 2px 5px rgba(0, 0, 0, .30));
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        50% 78%,
+        0 100%
+    );
+
+    opacity: .96;
+}
+
+.signet-voyage::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: 5px;
+    left: 0;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: rgba(72, 60, 34, .55);
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   LISTE VIDE
+========================================================= */
+
+.liste-vide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 190px;
+
+    border: 1px solid rgba(248, 239, 218, .20);
+
+    border-radius: 22px;
+
+    background: rgba(20, 31, 28, .72);
+
+    color: rgba(255, 255, 255, .65);
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.actions-voyages {
+    position: absolute;
+
+    left: 4%;
+    bottom: 75px;
+
+    display: flex;
+
+    gap: 13px;
+
+    width: 92%;
+
+    z-index: 20;
+}
+
+.action-voyage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    width: 50%;
+    height: 58px;
+
+    border: 1px solid rgba(229, 201, 140, .45);
+
+    border-radius: 15px;
+
+    background: rgba(22, 33, 30, .82);
+
+    color: white;
+
+    font-family:
+        "Trebuchet MS",
+        Arial,
+        sans-serif;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    letter-spacing: .7px;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.action-voyage svg {
+    width: 24px;
+    height: 24px;
+
+    fill: none;
+
+    stroke: #e5c98c;
+
+    stroke-width: 2;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.action-voyage:active {
+    animation: rebond-bouton .35s ease;
+
+    background: rgba(229, 201, 140, .10);
+}
+
+
+/* =========================================================
+   SUPPRESSION
+========================================================= */
+
+.btn-supprimer-voyage {
+    position: absolute;
+
+    right: 8px;
+    bottom: 8px;
+
+    width: 20px;
+    height: 20px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    font-size: 0;
+}
+
+.btn-supprimer-voyage::before {
+    content: "×";
+
+    color: rgba(255, 255, 255, .75);
+
+    font-size: 24px;
+
+    line-height: 20px;
+}
+
+
+/* =========================================================
+   POPUP SUPPRESSION
+========================================================= */
+
+.popup-suppression {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(8, 14, 13, .76);
+}
+
+.popup-suppression-contenu {
+    width: min(320px, 90vw);
+
+    padding: 25px 22px;
+
+    border: 1px solid rgba(229, 201, 140, .40);
+
+    border-radius: 21px;
+
+    background: #202e2a;
+
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, .60);
+
+    text-align: center;
+}
+
+.popup-titre {
+    margin-bottom: 10px;
+
+    color: #f8efda;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.popup-message {
+    margin-bottom: 22px;
+
+    color: rgba(255, 255, 255, .65);
+
+    font-size: 13px;
+}
+
+.popup-boutons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.popup-boutons button {
+    border: 0;
+
+    border-radius: 12px;
+
+    padding: 10px 15px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.popup-annuler {
+    color: white;
+
+    background: rgba(255, 255, 255, .10);
+}
+
+.popup-confirmer {
+    color: #202c28;
+
+    background: #e5c98c;
+}
+
+
+/* =========================================================
+   PETITS ÉCRANS
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .prochain-voyage {
+        width: 86%;
+        margin-top: 135px;
+    }
+
+    .carte-voyage {
+        min-height: 158px;
+    }
+
+    .contenu-carte {
+        padding-left: 15px;
+        padding-right: 38px;
+    }
+
+    .contenu-carte h2 {
+        font-size: 25px;
+        margin-bottom: 9px;
+    }
+
+    .ligne-voyage {
+        font-size: 14px;
+    }
+
+    .ligne-voyage svg {
+        width: 20px;
+        height: 20px;
+
+        flex-basis: 18px;
+    }
+
+    .signet-voyage {
+        right: 20px;
+
+        width: 34px;
+        height: 50px;
+    }
+
+    .tampon-voyage {
+        width: 92px;
+        height: 92px;
+
+        right: 13px;
+        top: 13px;
+    }
+
+    .tampon-avion {
+        font-size: 45px;
+    }
+
+    #tamponDate {
+        font-size: 9px;
+    }
+
+    .info-voyage {
+        font-size: 16px;
+    }
+}
