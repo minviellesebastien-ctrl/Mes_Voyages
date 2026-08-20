@@ -194,16 +194,9 @@ body {
     height: 55px;
     margin-top: 30px;
 
-    border: none;
-    border-radius: 17px;
+    background: transparent;
 
-    background: #176F5A;
-    color: white;
-
-    font-size: 16px;
-    font-weight: 700;
-
-    box-shadow: 0 5px 12px rgba(0, 0, 0, .45);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .45);
 
     cursor: pointer;
 }
