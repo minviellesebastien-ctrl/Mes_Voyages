@@ -254,7 +254,7 @@ body {
     border: 0;
     background: transparent;
 
-    color: #19cbbb;
+    color: white;
 
     font-size: 45px;
     line-height: 1;
@@ -278,7 +278,7 @@ body {
 
     gap: 7px;
 
-    color: white;
+    color: #176F5A;
 
     font-size: 12px;
     font-weight: 700;
@@ -320,7 +320,7 @@ body {
 }
 
 .photo-titre {
-    color: white;
+    color: #176F5A;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1.2px;
