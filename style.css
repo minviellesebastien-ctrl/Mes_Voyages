@@ -178,12 +178,12 @@ body {
 
 .bouton-voyages {
     width: 90%;
-    margin-top: 30px;
+    margin-top: 19px;
 }
 
 .bouton-voyages img {
     width: 100%;
-    height: 65px;
+    height: 100px;
     filter: drop-shadow(0 5px 8px rgba(0, 0, 0, .45));
 }
 
