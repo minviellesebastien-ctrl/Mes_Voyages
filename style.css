@@ -976,7 +976,7 @@ body {
 
     padding: 25px 22px;
 
-    border: 1px solid rgba(25, 203, 187, .55);
+    border: 1px solid #176F5A;
 
     border-radius: 22px;
 
@@ -1036,7 +1036,7 @@ body {
 }
 
 .popup-confirmer {
-    color: #071416;
-    background: #19cbbb;
+    color: white;
+    background: #176F5A;
     box-shadow: none;
 }
