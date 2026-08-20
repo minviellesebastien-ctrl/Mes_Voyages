@@ -219,12 +219,10 @@ body {
     margin: auto;
     padding: 25px 20px;
 
-    background:
-        linear-gradient(
-            180deg,
-            #071416 0%,
-            #091b1d 100%
-        );
+    background-image: url("fond-ajouter.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     color: white;
 }
