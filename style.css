@@ -675,8 +675,7 @@ body {
     max-height: 158px;
 
     overflow: hidden;
-
-    border: 1px solid rgba(25, 203, 187, .55);
+    border: 1px solid rgba(23, 111, 90, .55);
     border-radius: 17px;
 
     background:
@@ -840,7 +839,7 @@ body {
 
     min-height: 190px;
 
-    border: 1px solid rgba(25, 203, 187, .25);
+    border: 1px solid rgba(23, 111, 90, .55);
     border-radius: 22px;
 
     background: rgba(7, 20, 22, .65);
