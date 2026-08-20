@@ -390,19 +390,17 @@ body {
 
 .enregistrer {
     height: 55px;
-
     margin-top: 5px;
 
-    border: 1px solid #176F5A;
+    border: 2px solid #176F5A !important;
     border-radius: 17px;
 
-    background: #176F5A;
+    background: #176F5A !important;
 
-    color: white;
+    color: #ffffff !important;
 
     font-size: 15px;
     font-weight: 800;
-
     letter-spacing: 1px;
 
     cursor: pointer;
