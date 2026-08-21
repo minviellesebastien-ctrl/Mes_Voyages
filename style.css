@@ -1035,6 +1035,8 @@ body {
     background: transparent;
 
     z-index: 20;
+
+    animation: respiration-avion 3s ease-in-out infinite;
 }
 
 .bouton-carte img {
@@ -1042,3 +1044,14 @@ body {
     width: 100%;
     height: auto;
 }
+
+@keyframes respiration-avion {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.10);
+    }
