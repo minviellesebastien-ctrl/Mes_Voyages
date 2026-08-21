@@ -1,15 +1,19 @@
-const CACHE_NAME = "mes-voyages62";
+const CACHE_NAME = "mes-voyages63";
 
 const FILES = [
     "index.html",
     "ajout.html",
     "voyages.html",
+    "carte.html",
     "style.css",
+    "carte.css",
     "script.js",
     "ajout.js",
     "voyages.js",
+    "carte.js",
     "fond.png",
     "fond-ajouter.png",
+    "fond-map.png",
     "btn-ajouter.png",
     "btn-voyages.png",
     "signet.png",
