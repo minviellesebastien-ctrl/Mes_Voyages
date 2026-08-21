@@ -629,7 +629,7 @@ body {
 }
 
 .retour-voyages {
-    top: 40px;
+    top: 60px;
     left: 22px;
 
     width: 42px;
@@ -810,7 +810,7 @@ body {
     width: 27px;
     height: 40px;
 
-    background: #176F5A
+    background: linear-gradient(180deg, #25d8c6 0%, #0b9f97 100%);
 
     filter:
         drop-shadow(0 2px 5px rgba(0, 0, 0, .35))
