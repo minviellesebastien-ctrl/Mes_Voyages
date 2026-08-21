@@ -142,9 +142,11 @@ async function creerCarte(voyage) {
     contenu.appendChild(date);
     contenu.appendChild(localisation);
 
-    const signet = document.createElement("span");
-    signet.className = "signet-voyage";
-    signet.setAttribute("aria-hidden", "true");
+    const signet = document.createElement("img");
+signet.className = "signet-voyage";
+signet.src = "signet.png";
+signet.alt = "";
+signet.setAttribute("aria-hidden", "true");
 
     carte.appendChild(photo);
     carte.appendChild(contenu);
