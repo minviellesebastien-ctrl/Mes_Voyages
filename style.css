@@ -168,7 +168,6 @@ body {
     display: block;
     width: 100%;
     height: auto;
-
     user-select: none;
     -webkit-user-drag: none;
 }
@@ -190,17 +189,19 @@ body {
 /* AJOUTER */
 
 .bouton-ajouter {
-    width: 90%;
-    height: 55px;
+    width: 75%;
+    height: 45px;
     margin-top: 30px;
-
     background: transparent;
-
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .45);
-
+    border: none;
     cursor: pointer;
 }
 
+.bouton-ajouter img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, .45));
+}
 
 /* PETIT EFFET AU CLIC */
 
