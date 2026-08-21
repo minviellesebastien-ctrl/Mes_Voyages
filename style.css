@@ -1036,14 +1036,13 @@ body {
 
     z-index: 20;
 
-    animation: respiration-avion 1.6s ease-in-out infinite;
+    animation: respiration-avion 2s ease-in-out infinite;
 }
 
 .bouton-carte img {
     display: block;
     width: 100%;
     height: auto;
-    filter: drop-shadow(0 0 5px rgba(25, 203, 187, .8));
 }
 
 @keyframes respiration-avion {
@@ -1054,5 +1053,5 @@ body {
     }
 
     50% {
-        transform: scale(1.35);
+        transform: scale(1.25);
     }
