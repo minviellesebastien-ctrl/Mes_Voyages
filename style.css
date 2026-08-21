@@ -1024,14 +1024,14 @@ body {
 
 .bouton-carte {
     position: absolute;
-
     top: 50px;
-    right: 10;
+    right: 10px;
 
-    width: 45px;
+    width: 55px;
+    height: auto;
 
     padding: 0;
-    border: 0;
+    border: none;
     background: transparent;
 
     z-index: 20;
@@ -1039,7 +1039,6 @@ body {
 
 .bouton-carte img {
     display: block;
-
     width: 100%;
     height: auto;
 }
