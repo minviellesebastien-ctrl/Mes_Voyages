@@ -9,7 +9,7 @@ const FILES = [
     "ajout.js",
     "voyages.js",
     "fond.png",
-    "fond-ajouter.png*,
+    "fond-ajouter.png",
     "btn-ajouter.png",
     "btn-voyages.png",
     "signet.png",
