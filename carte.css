@@ -43,12 +43,5 @@ body {
 
     transform: translate(-50%, -50%);
 
-    fill: none;
-    stroke: #176F5A;
-    stroke-width: 4;
-
-    stroke-linecap: round;
-    stroke-linejoin: round;
-
     opacity: .85;
 }
