@@ -27,10 +27,11 @@ body {
 .carte-wrapper {
     position: absolute;
 
-    top: 62%;
+    top: 62
+        5%;
     left: 50%;
 
-    width: 460%;
+    width: 480%;
 
     transform: translate(-50%, -50%);
 }
