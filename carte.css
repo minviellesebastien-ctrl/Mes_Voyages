@@ -1,47 +1,45 @@
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 html,
 body {
-    margin: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
 body {
-    background: #071416;
-    font-family: Arial, sans-serif;
+    background: url("fond-map.png") center center / cover no-repeat;
 }
 
 .page-carte {
     position: relative;
 
     width: 100%;
-    max-width: 500px;
     height: 100dvh;
-
-    margin: auto;
-
-    background-image: url("fond-map.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
     overflow: hidden;
 }
 
-.carte-monde {
+.carte-wrapper {
     position: absolute;
 
     top: 50%;
     left: 50%;
 
-    width: 92%;
-    height: auto;
+    width: 170%;
 
     transform: translate(-50%, -50%);
+}
+
+.carte-monde {
+    display: block;
+
+    width: 100%;
+    height: auto;
 
     opacity: .85;
 }
