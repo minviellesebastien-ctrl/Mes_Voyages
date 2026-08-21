@@ -1036,7 +1036,7 @@ body {
 
     z-index: 20;
 
-    animation: respiration-avion 3s ease-in-out infinite;
+    animation: respiration-avion 2.2s ease-in-out infinite;
 }
 
 .bouton-carte img {
@@ -1053,5 +1053,5 @@ body {
     }
 
     50% {
-        transform: scale(1.10);
+        transform: scale(1.30);
     }
