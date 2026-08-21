@@ -1025,10 +1025,10 @@ body {
 .bouton-carte {
     position: absolute !important;
 
-    top: 100px !important;
-    right: 0 !important;
+    top: 50px !important;
+    right: 10 !important;
 
-    width: 35px;
+    width: 45px;
 
     padding: 0;
     border: 0;
