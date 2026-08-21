@@ -1023,10 +1023,10 @@ body {
 }
 
 .bouton-carte {
-    position: absolute !important;
+    position: absolute;
 
-    top: 50px !important;
-    right: 10 !important;
+    top: 50px;
+    right: 10;
 
     width: 45px;
 
