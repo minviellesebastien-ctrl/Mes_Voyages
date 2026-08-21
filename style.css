@@ -291,9 +291,9 @@ body {
 
     gap: 7px;
 
-    color: #176F5A;
+    color: white;
 
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
 
     letter-spacing: 1.2px;
@@ -333,8 +333,8 @@ body {
 }
 
 .photo-titre {
-    color: #176F5A;
-    font-size: 12px;
+    color: white;
+    font-size: 14px;
     font-weight: 700;
     letter-spacing: 1.2px;
 }
