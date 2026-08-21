@@ -24,6 +24,12 @@ btnVoyages.addEventListener("click", () => {
     window.location.href = "voyages.html";
 });
 
+const boutonCarte = document.getElementById("boutonCarte");
+
+boutonCarte.addEventListener("click", () => {
+    window.location.href = "carte.html";
+});
+
 const STORAGE_KEY = "mes-voyages";
 
 const photoProchainVoyage =
