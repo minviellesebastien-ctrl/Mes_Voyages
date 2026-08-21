@@ -31,3 +31,24 @@ body {
 
     overflow: hidden;
 }
+
+.carte-monde {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 92%;
+    height: auto;
+
+    transform: translate(-50%, -50%);
+
+    fill: none;
+    stroke: #176F5A;
+    stroke-width: 4;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    opacity: .85;
+}
