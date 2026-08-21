@@ -1023,22 +1023,18 @@ body {
 }
 
 .bouton-carte {
-    position: absolute;
+    position: absolute !important;
 
-    top: 40px;
-    right: 15px;
+    top: 100px !important;
+    right: 0 !important;
 
-    width: 45px;
-    height: auto;
+    width: 35px;
 
     padding: 0;
     border: 0;
-
     background: transparent;
 
-    z-index: 10;
-
-    cursor: pointer;
+    z-index: 20;
 }
 
 .bouton-carte img {
