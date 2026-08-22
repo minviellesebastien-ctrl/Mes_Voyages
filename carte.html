@@ -128,7 +128,7 @@
     "source": "countries",
     "paint": {
       "fill-color": "#176F5A",
-      "fill-opacity": 1
+      "fill-opacity": 0.95
     }
   },
   {
@@ -160,7 +160,10 @@
       await new Promise(resolve => setTimeout(resolve, 800));
       const el = document.createElement('div');
       el.className = 'custom-marker';
-      new maplibregl.Marker({ element: el })
+      new maplibregl.Marker({
+    element: el,
+    anchor: "center"
+})
         .setLngLat(trip.coords)
         .setPopup(new maplibregl.Popup({ offset: 8, closeButton: false }).setText(trip.city))
         .addTo(map);
