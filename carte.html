@@ -20,30 +20,15 @@
 
     #map { width: 100%; height: 100vh; background: transparent; }
 
-        /* Zone cliquable de 30x30px (invisible mais facile à toucher) */
-    .marker-container {
-      position: relative;
-      width: 30px;
-      height: 30px;
+            /* Un seul élément propre, centré nativement par MapLibre */
+    .custom-dot {
+      width: 14px;  /* Vous pouvez changer la taille ici (ex: 10px, 14px...) */
+      height: 14px; 
+      background-color: #FFFFFF;
+      border-radius: 50%;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
       cursor: pointer;
     }
-
-    /* Le point visuel : vous pouvez maintenant changer sa taille (ex: 10px, 12px...) 
-       il restera parfaitement centré sur la coordonnée GPS ! */
-    .dot {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); /* Centrage parfait */
-      
-      width: 20px;  /* Changez la taille ici sans que ça décale rien */
-      height: 20px; 
-      
-      background-color: red !important;
-      border-radius: 50%;
-      box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
-    }
-
 
     .retour-carte {
     position: absolute;
@@ -146,36 +131,31 @@
 
   map.on('load', () => setTimeout(startAnimation, 800));
 
-  async function startAnimation() {
-  map.flyTo({ center: [8, 42], zoom: 2.7, speed: 0.6, essential: true });
+    async function startAnimation() {
+    map.flyTo({ center: [8, 42], zoom: 2.7, speed: 0.6, essential: true });
 
-  for (const trip of trips) {
-    await new Promise(resolve => setTimeout(resolve, 300));
+    for (const trip of trips) {
+      await new Promise(resolve => setTimeout(resolve, 300));
 
-    // 1. Création du conteneur invisible de 30x30px
-    const container = document.createElement('div');
-    container.className = 'marker-container';
+      // 1. Création directe de l'élément visuel cliquable
+      const el = document.createElement('div');
+      el.className = 'custom-dot';
 
-    // 2. Création du point visuel centré
-    const dot = document.createElement('div');
-    dot.className = 'dot';
-    container.appendChild(dot);
+      // 2. Création de la popup
+      const popup = new maplibregl.Popup({ offset: 10, closeButton: false }).setText(trip.city);
 
-    // 3. Création de la popup
-    const popup = new maplibregl.Popup({ offset: 12, closeButton: false }).setText(trip.city);
+      // 3. Ajout du marqueur (anchor: 'center' assure qu'il est pile au bon endroit)
+      const marker = new maplibregl.Marker({ element: el, anchor: 'center' })
+        .setLngLat(trip.coords)
+        .setPopup(popup)
+        .addTo(map);
 
-    // 4. Ajout du marqueur
-    const marker = new maplibregl.Marker({ element: container, anchor: 'center' })
-      .setLngLat(trip.coords)
-      .setPopup(popup)
-      .addTo(map);
-
-    // 5. Action de clic
-    container.addEventListener("click", () => {
-      marker.togglePopup();
-    });
+      // 4. Clic direct sur l'élément
+      el.addEventListener("click", () => {
+        marker.togglePopup();
+      });
+    }
   }
-}
 
 </script>
 
