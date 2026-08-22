@@ -1,36 +1,99 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Ma carte</title>
-
-    <link rel="stylesheet" href="carte.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes Voyages</title>
+  <!-- CDN MapLibre GL -->
+  <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+  <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
+  
+  <style>
+    body, html { margin: 0; padding: 0; height: 100%; width: 100%; }
+    #map { width: 100%; height: 100vh; background-color: #0b1d28; }
+    
+    /* Style des marqueurs personnalisés */
+    .custom-marker {
+      width: 14px;
+      height: 14px;
+      background-color: #F39C12;
+      border: 2px solid #FFFFFF;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+  </style>
 </head>
-
 <body>
 
-    <main class="page-carte">
+<div id="map"></div>
 
-        <div class="carte-wrapper">
+<script>
+  // 1. Données des voyages
+  const trips = [
+    { city: "Londres", country: "GB", coords: [-0.1278, 51.5074] },
+    { city: "Split", country: "HR", coords: [16.4402, 43.5081] },
+    { city: "Koutouloufari", country: "GR", coords: [25.3927, 35.3061] }
+  ];
 
-            <img
-                src="carte-monde.svg"
-                class="carte-monde"
-                alt=""
-            >
+  const visitedCountries = ["GBR", "HRV", "GRC"]; // Codes ISO 3 lettres
 
-        </div>
+  // 2. Initialisation de la carte (Vue Monde)
+  const map = new maplibregl.Map({
+    container: 'map',
+    style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+    center: [15, 30],
+    zoom: 1.8,
+    pitch: 0
+  });
 
-    </main>
+  map.on('load', () => {
+    // 3. Coloriage des pays visités en #176F5A
+    map.addSource('countries', {
+      type: 'geojson',
+      data: 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json'
+    });
 
-    <script src="carte.js"></script>
+    map.addLayer({
+      'id': 'visited-countries-layer',
+      'type': 'fill',
+      'source': 'countries',
+      'paint': {
+        'fill-color': '#176F5A',
+        'fill-opacity': 0.7
+      },
+      'filter': ['in', 'id', ...visitedCountries]
+    });
+
+    // 4. Lancement de l'animation après 1 seconde
+    setTimeout(startTripAnimation, 1000);
+  });
+
+  // 5. Scénario d'animation étape par étape
+  async function startTripAnimation() {
+    // Zoom sur la zone Europe / Méditerranée
+    map.flyTo({
+      center: [15, 45],
+      zoom: 3.8,
+      speed: 0.7,
+      essential: true
+    });
+
+    // Apparition progressive des villes
+    for (const trip of trips) {
+      await new Promise(resolve => setTimeout(resolve, 1200));
+
+      // Créer l'élément visuel du marqueur
+      const el = document.createElement('div');
+      el.className = 'custom-marker';
+
+      // Ajouter le marqueur et une popup avec le nom de la ville
+      new maplibregl.Marker(el)
+        .setLngLat(trip.coords)
+        .setPopup(new maplibregl.Popup({ offset: 10 }).setText(trip.city))
+        .addTo(map);
+    }
+  }
+</script>
 
 </body>
 </html>
