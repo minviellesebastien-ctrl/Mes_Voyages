@@ -20,14 +20,16 @@
 
     #map { width: 100%; height: 100vh; background: transparent; }
 
-    /* Points des villes : petits et blancs */
+    /* Pins des villes */
    .custom-marker {
-      width: 6px;
-      height: 6px;
-      background-color: #FFFFFF;
-      border-radius: 50%;
-      box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
-    }
+  width: 20px;
+  height: 26px;
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 0 5px rgba(0,0,0,0.35);
+}
 
     .retour-carte {
     position: absolute;
@@ -134,7 +136,7 @@
     map.flyTo({ center: [8, 42], zoom: 2.7, speed: 0.6, essential: true });
 
     for (const trip of trips) {
-      await new Promise(resolve => setTimeout(resolve, 800));
+      await new Promise(resolve => setTimeout(resolve, 400));
       const el = document.createElement('div');
       el.className = 'custom-marker';
       new maplibregl.Marker({
