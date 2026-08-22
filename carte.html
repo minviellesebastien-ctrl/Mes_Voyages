@@ -20,36 +20,26 @@
 
     #map { width: 100%; height: 100vh; background: transparent; }
 
-   .custom-marker {
-    width: 30px;
-    height: 30px;
 
-    position: relative;
+    /* Zone cliquable invisible plus large */
+    .marker-container {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
 
-    cursor: pointer;
-}
-
-.custom-marker::before {
-    content: "";
-
-    position: absolute;
-
-    width: 6px;
-    height: 6px;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    background: #FFFFFF;
-    border-radius: 50%;
-
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
-
-    pointer-events: none;
-}
-
+    /* Le petit point blanc visuel */
+    .dot {
+      width: 6px;
+      height: 6px;
+      background-color: #FFFFFF;
+      border-radius: 50%;
+      box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+    }
+    
 
     .retour-carte {
     position: absolute;
@@ -161,33 +151,45 @@
   const map = new maplibregl.Map({
     container: 'map',
     style: style,
-    center: [-14, 42],
+    center: [8, 42],
     zoom: 1.8
   });
 
   map.on('load', () => setTimeout(startAnimation, 800));
 
   async function startAnimation() {
-    map.flyTo({ center: [-14, 42], zoom: 2.9, speed: 0.7, essential: true });
+    map.flyTo({ center: [8, 42], zoom: 2.7, speed: 0.7, essential: true });
 
-    for (const trip of trips) {
+        for (const trip of trips) {
       await new Promise(resolve => setTimeout(resolve, 800));
-      const el = document.createElement('div');
-      el.className = 'custom-marker';
-      const marker = new maplibregl.Marker({ element: el })
-    .setLngLat(trip.coords)
-    .addTo(map);
 
-marker.setPopup(
-    new maplibregl.Popup({
-        offset: 10,
+      // 1. Créer le conteneur cliquable (30x30 px)
+      const container = document.createElement('div');
+      container.className = 'marker-container';
+
+      // 2. Créer le petit point blanc visuel (6px)
+      const dot = document.createElement('div');
+      dot.className = 'dot';
+      container.appendChild(dot);
+
+      // 3. Créer la popup avec le nom de la ville
+      const popup = new maplibregl.Popup({
+        offset: 15,
         closeButton: false
-    }).setText(trip.city)
-);
+      }).setText(trip.city);
 
-marker.getElement().addEventListener("click", () => {
-    marker.togglePopup();
-});
+      // 4. Attacher le marqueur à la carte
+      const marker = new maplibregl.Marker({ element: container })
+        .setLngLat(trip.coords)
+        .setPopup(popup)
+        .addTo(map);
+
+      // 5. Clic explicite pour ouvrir/fermer la popup
+      container.addEventListener("click", () => {
+        marker.togglePopup();
+      });
+        }
+    
     }
   }
 </script>
