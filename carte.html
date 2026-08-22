@@ -129,8 +129,8 @@
     "source": "countries",
     "paint": {
       "line-color": "#FFFFFF",
-      "line-width": 0.3,
-      "line-opacity": 0.3
+      "line-width": 0.4,
+      "line-opacity": 0.4
     }
   }
 ]
@@ -139,14 +139,14 @@
   const map = new maplibregl.Map({
     container: 'map',
     style: style,
-    center: [2, 42],
+    center: [4, 42],
     zoom: 1.8
   });
 
   map.on('load', () => setTimeout(startAnimation, 800));
 
   async function startAnimation() {
-    map.flyTo({ center: [2, 42], zoom: 2.6, speed: 0.6, essential: true });
+    map.flyTo({ center: [4, 42], zoom: 2.8, speed: 0.6, essential: true });
 
     for (const trip of trips) {
       await new Promise(resolve => setTimeout(resolve, 800));
