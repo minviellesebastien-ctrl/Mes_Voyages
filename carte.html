@@ -154,15 +154,16 @@
       el.className = 'custom-marker';
       const marker = new maplibregl.Marker({ element: el })
     .setLngLat(trip.coords)
-    .setPopup(
-        new maplibregl.Popup({
-            offset: 10,
-            closeButton: false
-        }).setText(trip.city)
-    )
     .addTo(map);
 
-el.addEventListener("click", () => {
+marker.setPopup(
+    new maplibregl.Popup({
+        offset: 10,
+        closeButton: false
+    }).setText(trip.city)
+);
+
+marker.getElement().addEventListener("click", () => {
     marker.togglePopup();
 });
     }
