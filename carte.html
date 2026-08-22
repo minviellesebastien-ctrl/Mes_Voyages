@@ -20,16 +20,28 @@
 
     #map { width: 100%; height: 100vh; background: transparent; }
 
-            /* Un seul élément propre, centré nativement par MapLibre */
-        .custom-dot {
-      width: 14px;
-      height: 14px;
+    /* Zone cliquable de 30x30px centrée par MapLibre */
+    .custom-marker {
+      width: 30px;
+      height: 30px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    /* Le point blanc de 6px calé au centre exact des 30px */
+    .custom-marker::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 6px;
       background-color: #FFFFFF;
       border-radius: 50%;
-      box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
-      cursor: pointer;
-      pointer-events: auto !important; /* Force la détection du clic */
+      box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
     }
+
 
 
     .retour-carte {
@@ -133,27 +145,36 @@
 
   map.on('load', () => setTimeout(startAnimation, 800));
 
-      async function startAnimation() {
+        async function startAnimation() {
     map.flyTo({ center: [8, 42], zoom: 2.7, speed: 0.6, essential: true });
 
     for (const trip of trips) {
-      await new Promise(resolve => setTimeout(resolve, 300));
-
-      // 1. Création du point visuel
+      await new Promise(resolve => setTimeout(resolve, 400));
+      
       const el = document.createElement('div');
-      el.className = 'custom-dot';
+      el.className = 'custom-marker';
 
-      // 2. Création de la popup
-      const popup = new maplibregl.Popup({ offset: 10, closeButton: false }).setText(trip.city);
+      const popup = new maplibregl.Popup({ offset: 8, closeButton: false }).setText(trip.city);
 
-      // 3. Attachement à la carte (MapLibre ouvre la popup au clic automatiquement)
-      new maplibregl.Marker({ element: el, anchor: 'center' })
+      const marker = new maplibregl.Marker({
+        element: el,
+        anchor: "center"
+      })
         .setLngLat(trip.coords)
         .setPopup(popup)
         .addTo(map);
+
+      // Clic explicite pour ouvrir / fermer la popup sur la zone de 30px
+      el.addEventListener("click", () => {
+        marker.togglePopup();
+      });
     }
   }
+  
+</script>
 
+</body>
+</html>
 
 </script>
 
