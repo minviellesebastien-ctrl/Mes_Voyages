@@ -91,25 +91,34 @@
       }
     },
     "layers": [
-      {
-        "id": "background",
-        "type": "background",
-        "paint": { "background-opacity": 0 }
-      },
-      {
-        "id": "all-countries",
-        "type": "fill",
-        "source": "countries",
-        "paint": { "fill-color": "#176F5A", "fill-opacity": 0.85 }
-      },
-      {
-        "id": "borders",
-        "type": "line",
-        "source": "countries",
-        "paint": { "line-color": "#FFFFFF", "line-width": 0.5, "line-opacity": 0.3 }
-      }
-    ]
-  };
+  {
+    "id": "background",
+    "type": "background",
+    "paint": {
+      "background-color": "#071416",
+      "background-opacity": 0.25
+    }
+  },
+  {
+    "id": "all-countries",
+    "type": "fill",
+    "source": "countries",
+    "paint": {
+      "fill-color": "#176F5A",
+      "fill-opacity": 0.85
+    }
+  },
+  {
+    "id": "borders",
+    "type": "line",
+    "source": "countries",
+    "paint": {
+      "line-color": "#FFFFFF",
+      "line-width": 0.5,
+      "line-opacity": 0.25
+    }
+  }
+]
 
   const map = new maplibregl.Map({
     container: 'map',
