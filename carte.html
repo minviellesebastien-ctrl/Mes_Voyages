@@ -62,6 +62,21 @@
     outline: none;
     background: transparent;
 }
+    
+.maplibregl-popup-content {
+    background: #071416;
+    color: white;
+    border: 1px solid #19cbbb;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.maplibregl-popup-tip {
+    border-top-color: #071416;
+}
+    
   </style>
 </head>
 <body>
@@ -96,7 +111,7 @@
     "type": "background",
     "paint": {
       "background-color": "#071416",
-      "background-opacity": 0.25
+      "background-opacity": 0.20
     }
   },
   {
@@ -114,8 +129,8 @@
     "source": "countries",
     "paint": {
       "line-color": "#FFFFFF",
-      "line-width": 0.5,
-      "line-opacity": 0.45
+      "line-width": 0.,
+      "line-opacity": 0.3
     }
   }
 ]
@@ -124,23 +139,32 @@
   const map = new maplibregl.Map({
     container: 'map',
     style: style,
-    center: [5, 42],
-    zoom: 2
+    center: [0, 42],
+    zoom: 1.6
   });
 
   map.on('load', () => setTimeout(startAnimation, 800));
 
   async function startAnimation() {
-    map.flyTo({ center: [5, 42], zoom: 2.2, speed: 0.4, essential: true });
+    map.flyTo({ center: [0, 42], zoom: 2.4, speed: 0.6, essential: true });
 
     for (const trip of trips) {
       await new Promise(resolve => setTimeout(resolve, 800));
       const el = document.createElement('div');
       el.className = 'custom-marker';
-      new maplibregl.Marker({ element: el })
-        .setLngLat(trip.coords)
-        .setPopup(new maplibregl.Popup({ offset: 8, closeButton: false }).setText(trip.city))
-        .addTo(map);
+      const marker = new maplibregl.Marker({ element: el })
+    .setLngLat(trip.coords)
+    .setPopup(
+        new maplibregl.Popup({
+            offset: 10,
+            closeButton: false
+        }).setText(trip.city)
+    )
+    .addTo(map);
+
+el.addEventListener("click", () => {
+    marker.togglePopup();
+});
     }
   }
 </script>
