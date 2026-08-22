@@ -21,14 +21,16 @@
     #map { width: 100%; height: 100vh; background: transparent; }
 
             /* Un seul élément propre, centré nativement par MapLibre */
-    .custom-dot {
-      width: 14px;  /* Vous pouvez changer la taille ici (ex: 10px, 14px...) */
-      height: 14px; 
+        .custom-dot {
+      width: 14px;
+      height: 14px;
       background-color: #FFFFFF;
       border-radius: 50%;
       box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
       cursor: pointer;
+      pointer-events: auto !important; /* Force la détection du clic */
     }
+
 
     .retour-carte {
     position: absolute;
@@ -131,31 +133,27 @@
 
   map.on('load', () => setTimeout(startAnimation, 800));
 
-    async function startAnimation() {
+      async function startAnimation() {
     map.flyTo({ center: [8, 42], zoom: 2.7, speed: 0.6, essential: true });
 
     for (const trip of trips) {
       await new Promise(resolve => setTimeout(resolve, 300));
 
-      // 1. Création directe de l'élément visuel cliquable
+      // 1. Création du point visuel
       const el = document.createElement('div');
       el.className = 'custom-dot';
 
       // 2. Création de la popup
       const popup = new maplibregl.Popup({ offset: 10, closeButton: false }).setText(trip.city);
 
-      // 3. Ajout du marqueur (anchor: 'center' assure qu'il est pile au bon endroit)
-      const marker = new maplibregl.Marker({ element: el, anchor: 'center' })
+      // 3. Attachement à la carte (MapLibre ouvre la popup au clic automatiquement)
+      new maplibregl.Marker({ element: el, anchor: 'center' })
         .setLngLat(trip.coords)
         .setPopup(popup)
         .addTo(map);
-
-      // 4. Clic direct sur l'élément
-      el.addEventListener("click", () => {
-        marker.togglePopup();
-      });
     }
   }
+
 
 </script>
 
