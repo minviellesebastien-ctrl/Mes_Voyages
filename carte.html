@@ -130,21 +130,33 @@
   map.on('load', () => setTimeout(startAnimation, 800));
 
         async function startAnimation() {
-    map.flyTo({ center: [8, 42], zoom: 2.7, speed: 0.6, essential: true });
+  map.flyTo({
+    center: [8, 42],
+    zoom: 2.7,
+    speed: 0.6,
+    essential: true
+  });
 
-    for (const trip of trips) {
-      await new Promise(resolve => setTimeout(resolve, 400));
-      const el = document.createElement('div');
-      el.className = 'custom-marker';
-      new maplibregl.Marker({
-    element: el,
-    anchor: "center"
-})
-        .setLngLat(trip.coords)
-        .setPopup(new maplibregl.Popup({ offset: 8, closeButton: false }).setText(trip.city))
-        .addTo(map);
-    }
+  for (const trip of trips) {
+    await new Promise(resolve => setTimeout(resolve, 300));
+
+    const el = document.createElement('div');
+    el.className = 'custom-marker';
+
+    new maplibregl.Marker({
+      element: el,
+      anchor: "center"
+    })
+      .setLngLat(trip.coords)
+      .setPopup(
+        new maplibregl.Popup({
+          offset: 8,
+          closeButton: false
+        }).setText(trip.city)
+      )
+      .addTo(map);
   }
+}
 </script>
 
 </body>
