@@ -24,23 +24,30 @@
     width: 30px;
     height: 30px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
 
     cursor: pointer;
 }
 
-   .custom-marker::after {
+.custom-marker::before {
     content: "";
+
+    position: absolute;
 
     width: 6px;
     height: 6px;
 
-    background-color: #FFFFFF;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: #FFFFFF;
     border-radius: 50%;
 
     box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+
+    pointer-events: none;
 }
 
 
