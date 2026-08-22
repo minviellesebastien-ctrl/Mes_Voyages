@@ -4,92 +4,146 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mes Voyages</title>
+  
   <!-- CDN MapLibre GL -->
   <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
   <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
   
   <style>
-    body, html { margin: 0; padding: 0; height: 100%; width: 100%; }
-    #map { width: 100%; height: 100vh; background-color: #0b1d28; }
-    
-    /* Style des marqueurs personnalisés */
+    body, html { 
+      margin: 0; 
+      padding: 0; 
+      height: 100%; 
+      width: 100%; 
+      /* Votre fond d'écran */
+      background-image: url('fond.png'); 
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #0b1d28; /* Couleur de secours si l'image charge lentement */
+      overflow: hidden;
+    }
+
+    #map { 
+      width: 100%; 
+      height: 100vh; 
+      background: transparent; 
+    }
+
+    /* Marqueurs des villes : petits et blancs */
     .custom-marker {
-      width: 14px;
-      height: 14px;
-      background-color: #F39C12;
-      border: 2px solid #FFFFFF;
+      width: 6px;
+      height: 6px;
+      background-color: #FFFFFF;
       border-radius: 50%;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+      transition: transform 0.3s ease;
+    }
+
+    /* Bouton retour optionnel */
+    .btn-retour {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.4);
+      color: #FFFFFF;
+      padding: 8px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-family: sans-serif;
+      font-size: 14px;
+      backdrop-filter: blur(5px);
     }
   </style>
 </head>
 <body>
 
+<a href="index.html" class="btn-retour">← Retour</a>
 <div id="map"></div>
 
 <script>
-  // 1. Données des voyages
+  // 1. Vos données de voyages
   const trips = [
     { city: "Londres", country: "GB", coords: [-0.1278, 51.5074] },
     { city: "Split", country: "HR", coords: [16.4402, 43.5081] },
     { city: "Koutouloufari", country: "GR", coords: [25.3927, 35.3061] }
   ];
 
-  const visitedCountries = ["GBR", "HRV", "GRC"]; // Codes ISO 3 lettres
+  const visitedCountries = ["GBR", "HRV", "GRC"]; // Codes ISO-3 des pays
 
-  // 2. Initialisation de la carte (Vue Monde)
+  // 2. Style vectoriel minimaliste et transparent
+  const transparentStyle = {
+    "version": 8,
+    "sources": {
+      "countries": {
+        "type": "geojson",
+        "data": "https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json"
+      }
+    },
+    "layers": [
+      {
+        "id": "background",
+        "type": "background",
+        "paint": { "background-opacity": 0 } // Arrière-plan 100% transparent
+      },
+      {
+        "id": "visited-countries",
+        "type": "fill",
+        "source": "countries",
+        "filter": ["in", "id", ...visitedCountries],
+        "paint": {
+          "fill-color": "#176F5A", // Votre vert émeraude
+          "fill-opacity": 0.855
+        }
+      },
+      {
+        "id": "country-borders",
+        "type": "line",
+        "source": "countries",
+        "filter": ["in", "id", ...visitedCountries],
+        "paint": {
+          "line-color": "#FFFFFF",
+          "line-width": 0.8,
+          "line-opacity": 0.4
+        }
+      }
+    ]
+  };
+
+  // 3. Initialisation de la carte en vue Monde
   const map = new maplibregl.Map({
     container: 'map',
-    style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+    style: transparentStyle,
     center: [15, 30],
-    zoom: 1.8,
-    pitch: 0
+    zoom: 1.5
   });
 
   map.on('load', () => {
-    // 3. Coloriage des pays visités en #176F5A
-    map.addSource('countries', {
-      type: 'geojson',
-      data: 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json'
-    });
-
-    map.addLayer({
-      'id': 'visited-countries-layer',
-      'type': 'fill',
-      'source': 'countries',
-      'paint': {
-        'fill-color': '#176F5A',
-        'fill-opacity': 0.7
-      },
-      'filter': ['in', 'id', ...visitedCountries]
-    });
-
-    // 4. Lancement de l'animation après 1 seconde
-    setTimeout(startTripAnimation, 1000);
+    // Lancement de la séquence d'animation après 800ms
+    setTimeout(startAnimation, 800);
   });
 
-  // 5. Scénario d'animation étape par étape
-  async function startTripAnimation() {
+  // 4. Animation : Zoom + apparition des villes
+  async function startAnimation() {
     // Zoom sur la zone Europe / Méditerranée
     map.flyTo({
-      center: [15, 45],
+      center: [12, 43],
       zoom: 3.8,
-      speed: 0.7,
+      speed: 0.6,
       essential: true
     });
 
-    // Apparition progressive des villes
+    // Fait poper les petits points blancs un par un
     for (const trip of trips) {
-      await new Promise(resolve => setTimeout(resolve, 1200));
+      await new Promise(resolve => setTimeout(resolve, 900));
 
-      // Créer l'élément visuel du marqueur
       const el = document.createElement('div');
       el.className = 'custom-marker';
 
-      // Ajouter le marqueur et une popup avec le nom de la ville
-      new maplibregl.Marker(el)
+      new maplibregl.Marker({ element: el })
         .setLngLat(trip.coords)
-        .setPopup(new maplibregl.Popup({ offset: 10 }).setText(trip.city))
+        .setPopup(new maplibregl.Popup({ offset: 8, closeButton: false }).setText(trip.city))
         .addTo(map);
     }
   }
