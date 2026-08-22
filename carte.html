@@ -20,16 +20,30 @@
 
     #map { width: 100%; height: 100vh; background: transparent; }
 
-    /* Pins des villes */
-   .custom-marker {
-  width: 20px;
-  height: 26px;
-  position: relative;
-  background: #FFFFFF;
-  border-radius: 50% 50% 50% 0;
-  transform: rotate(-45deg);
-  box-shadow: 0 0 5px rgba(0,0,0,0.35);
-}
+        /* Zone cliquable de 30x30px (invisible mais facile à toucher) */
+    .marker-container {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    /* Le point visuel : vous pouvez maintenant changer sa taille (ex: 10px, 12px...) 
+       il restera parfaitement centré sur la coordonnée GPS ! */
+    .dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Centrage parfait */
+      
+      width: 6px;  /* Changez la taille ici sans que ça décale rien */
+      height: 6px; 
+      
+      background-color: #FFFFFF;
+      border-radius: 50%;
+      box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+    }
+
 
     .retour-carte {
     position: absolute;
