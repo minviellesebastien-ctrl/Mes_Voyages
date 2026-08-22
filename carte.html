@@ -150,14 +150,14 @@
   const map = new maplibregl.Map({
     container: 'map',
     style: style,
-    center: [4, 42],
+    center: [-3, 42],
     zoom: 1.8
   });
 
   map.on('load', () => setTimeout(startAnimation, 800));
 
   async function startAnimation() {
-    map.flyTo({ center: [4, 42], zoom: 2.8, speed: 0.6, essential: true });
+    map.flyTo({ center: [-3, 42], zoom: 3, speed: 0.7, essential: true });
 
     for (const trip of trips) {
       await new Promise(resolve => setTimeout(resolve, 800));
