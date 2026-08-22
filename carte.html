@@ -21,8 +21,8 @@
     #map { width: 100%; height: 100vh; background: transparent; }
 
     .custom-marker {
-  width: 30px;
-  height: 30px;
+  width: 8px;
+  height: 8px;
   background-color: #FFFFFF;
   border-radius: 50%;
   box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
@@ -144,11 +144,27 @@
   for (const trip of trips) {
     await new Promise(resolve => setTimeout(resolve, 300));
 
-    const el = document.createElement('div');
-    el.className = 'custom-marker';
+    // Point visible 6x6
+    const point = document.createElement('div');
+    point.className = 'custom-marker';
 
     new maplibregl.Marker({
-      element: el,
+      element: point,
+      anchor: "center"
+    })
+      .setLngLat(trip.coords)
+      .addTo(map);
+
+    // Zone de clic invisible 30x30
+    const zone = document.createElement('div');
+
+    zone.style.width = "30px";
+    zone.style.height = "30px";
+    zone.style.background = "transparent";
+    zone.style.cursor = "pointer";
+
+    new maplibregl.Marker({
+      element: zone,
       anchor: "center"
     })
       .setLngLat(trip.coords)
@@ -160,7 +176,7 @@
       )
       .addTo(map);
   }
-  }
+        }
 </script>
 
 </body>
