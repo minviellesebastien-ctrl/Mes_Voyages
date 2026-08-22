@@ -20,29 +20,13 @@
 
     #map { width: 100%; height: 100vh; background: transparent; }
 
-    /* Zone cliquable de 30x30px centrée par MapLibre */
     .custom-marker {
-      width: 30px;
-      height: 30px;
-      position: relative;
-      cursor: pointer;
-    }
-
-    /* Le point blanc de 6px calé au centre exact des 30px */
-    .custom-marker::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 6px;
-      height: 6px;
-      background-color: #FFFFFF;
-      border-radius: 50%;
-      box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
-    }
-
-
+  width: 6px;
+  height: 6px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+}
 
     .retour-carte {
     position: absolute;
@@ -150,32 +134,17 @@
 
     for (const trip of trips) {
       await new Promise(resolve => setTimeout(resolve, 400));
-      
       const el = document.createElement('div');
       el.className = 'custom-marker';
-
-      const popup = new maplibregl.Popup({ offset: 8, closeButton: false }).setText(trip.city);
-
-      const marker = new maplibregl.Marker({
-        element: el,
-        anchor: "center"
-      })
+      new maplibregl.Marker({
+    element: el,
+    anchor: "center"
+})
         .setLngLat(trip.coords)
-        .setPopup(popup)
+        .setPopup(new maplibregl.Popup({ offset: 8, closeButton: false }).setText(trip.city))
         .addTo(map);
-
-      // Clic explicite pour ouvrir / fermer la popup sur la zone de 30px
-      el.addEventListener("click", () => {
-        marker.togglePopup();
-      });
     }
   }
-  
-</script>
-
-</body>
-</html>
-
 </script>
 
 </body>
