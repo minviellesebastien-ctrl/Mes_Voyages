@@ -130,7 +130,7 @@
   map.on('load', () => setTimeout(startAnimation, 800));
 
   async function startAnimation() {
-    map.flyTo({ center: [5, 42], zoom: 4.5, speed: 0.6, essential: true });
+    map.flyTo({ center: [5, 42], zoom: 2.4, speed: 0.4, essential: true });
 
     for (const trip of trips) {
       await new Promise(resolve => setTimeout(resolve, 800));
