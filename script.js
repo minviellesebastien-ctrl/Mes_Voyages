@@ -1,7 +1,5 @@
 const btnAjouter = document.getElementById("btnAjouter");
 const btnVoyages = document.getElementById("btnVoyages");
-const tamponVoyage = document.getElementById("tamponVoyage");
-const tamponDate = document.getElementById("tamponDate");
 const infosProchainVoyage =
     document.getElementById("infosProchainVoyage");
 
@@ -264,7 +262,6 @@ function afficherAccueilVide() {
     voyageVide.style.display = "";
 
     infosProchainVoyage.hidden = true;
-    tamponVoyage.hidden = true;
 }
 
 
@@ -291,9 +288,6 @@ async function afficherProchainVoyage() {
     infoDate.textContent = voyage.date || "";
 
     infosProchainVoyage.hidden = false;
-
-    tamponDate.textContent = voyage.date || "";
-    tamponVoyage.hidden = false;
 
     /* La photo est facultative : le voyage reste affiché
        même si aucune photo n'est disponible. */
