@@ -469,8 +469,8 @@ body {
     position: absolute;
     top: 18px;
     right: 18px;
-    width: 105px;
-    height: 105px;
+    width: 145px;
+    height: 145px;
     z-index: 3;
     opacity: .68;
     transform: rotate(7deg);
