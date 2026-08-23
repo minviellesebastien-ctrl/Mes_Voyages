@@ -4,40 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="theme-color" content="#071416">
 
     <title>Mes Voyages</title>
 
     <link rel="stylesheet" href="style.css">
-    
-<link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#0f766e">
-    
+
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <meta name="theme-color" content="#0f766e">
 </head>
 
 <body>
 
     <main class="accueil">
 
-        <button id="boutonCarte" class="bouton-carte" type="button">
-    <img src="avion.png" alt="">
+        <!-- BOUTON CARTE -->
+        <button
+            id="boutonCarte"
+            class="bouton-carte"
+            type="button"
+        >
+            <img src="avion.png" alt="">
         </button>
 
-        <!-- Prochain voyage -->
-        <section id="prochainVoyage" class="prochain-voyage">
 
-<img src="tampon.png" class="tampon-decoration" alt="">
-            
-            <!-- Affiché lorsqu'aucun voyage n'est prévu -->
-            <div id="voyageVide" class="voyage-vide">
+        <!-- =========================
+             PROCHAIN VOYAGE
+        ========================== -->
 
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+        <section
+            id="prochainVoyage"
+            class="prochain-voyage"
+        >
+
+            <!-- État vide -->
+            <div
+                id="voyageVide"
+                class="voyage-vide"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
                     <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/>
                 </svg>
 
             </div>
 
-            <!-- Future photo du prochain voyage -->
+
+            <!-- PHOTO DU VOYAGE -->
             <img
                 id="photoProchainVoyage"
                 class="photo-voyage"
@@ -46,60 +64,136 @@
                 hidden
             >
 
-            <img src="tampon.png" class="tampon-decoration" alt="">
 
-    <div class="info-voyage">
-        <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="9"/>
-            <path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9M12 3c-3 3-4 6-4 9s1 6 4 9"/>
-        </svg>
+            <!-- TAMPON DÉCORATIF -->
+            <img
+                src="tampon.png"
+                class="tampon-decoration"
+                alt=""
+            >
 
-        <span id="infoPays"></span>
-    </div>
 
-    <div class="info-voyage">
-        <svg viewBox="0 0 24 24">
-            <path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11z"/>
-            <circle cx="12" cy="10" r="2"/>
-        </svg>
+            <!-- INFORMATIONS DU VOYAGE -->
+            <div
+                id="infosProchainVoyage"
+                class="infos-prochain-voyage"
+                hidden
+            >
 
-        <span id="infoVille"></span>
-    </div>
+                <!-- PAYS -->
+                <div class="info-voyage">
 
-    <div class="info-voyage">
-        <svg viewBox="0 0 24 24">
-            <rect x="3" y="5" width="18" height="16" rx="2"/>
-            <path d="M7 3v4M17 3v4M3 10h18"/>
-        </svg>
+                    <svg viewBox="0 0 24 24">
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="9"
+                        />
 
-        <span id="infoDate"></span>
-    </div>
+                        <path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9M12 3c-3 3-4 6-4 9s1 6 4 9"/>
+                    </svg>
 
-</div>
-            
+                    <span id="infoPays"></span>
+
+                </div>
+
+
+                <!-- VILLE -->
+                <div class="info-voyage">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11z"/>
+
+                        <circle
+                            cx="12"
+                            cy="10"
+                            r="2"
+                        />
+                    </svg>
+
+                    <span id="infoVille"></span>
+
+                </div>
+
+
+                <!-- DATE -->
+                <div class="info-voyage">
+
+                    <svg viewBox="0 0 24 24">
+                        <rect
+                            x="3"
+                            y="5"
+                            width="18"
+                            height="16"
+                            rx="2"
+                        />
+
+                        <path d="M7 3v4M17 3v4M3 10h18"/>
+                    </svg>
+
+                    <span id="infoDate"></span>
+
+                </div>
+
+            </div>
+
         </section>
 
 
-        <!-- Mes voyages -->
-        <button id="btnVoyages" class="bouton-image bouton-voyages">
-            <img src="btn-voyages.png" alt="Mes voyages">
+        <!-- =========================
+             MES VOYAGES
+        ========================== -->
+
+        <button
+            id="btnVoyages"
+            class="bouton-image bouton-voyages"
+            type="button"
+        >
+
+            <img
+                src="btn-voyages.png"
+                alt="Mes voyages"
+            >
+
         </button>
 
 
-        <!-- Ajouter -->
-        <button id="btnAjouter" class="bouton-image bouton-ajouter">
-            <img src="btn-ajouter.png" alt="Ajouter un voyage">
+        <!-- =========================
+             AJOUTER
+        ========================== -->
+
+        <button
+            id="btnAjouter"
+            class="bouton-image bouton-ajouter"
+            type="button"
+        >
+
+            <img
+                src="btn-ajouter.png"
+                alt="Ajouter un voyage"
+            >
+
         </button>
 
     </main>
 
+
+    <!-- SCRIPT PRINCIPAL -->
     <script src="script.js?v=6"></script>
 
-<script>
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("service-worker.js");
-}
-</script>
-    
+
+    <!-- SERVICE WORKER -->
+    <script>
+
+        if ("serviceWorker" in navigator) {
+
+            navigator.serviceWorker.register(
+                "service-worker.js"
+            );
+
+        }
+
+    </script>
+
 </body>
 </html>
