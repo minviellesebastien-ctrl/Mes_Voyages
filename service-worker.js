@@ -17,6 +17,7 @@ const FILES = [
     "btn-ajouter.png",
     "btn-voyages.png",
     "signet.png",
+    "tampon.png",
     "icone-192.png",
     "icone-512.png",
     "manifest.webmanifest"
