@@ -1,4 +1,4 @@
-const CACHE_NAME = "voyage-33";
+const CACHE_NAME = "voyage-34";
 
 const FILES = [
     "index.html",
