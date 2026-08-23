@@ -476,9 +476,6 @@ body {
     width: 105px;
     height: 105px;
 
-    border: 3px solid rgba(255, 255, 255, .95);
-    border-radius: 50%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -486,61 +483,98 @@ body {
 
     color: white;
 
-    transform: rotate(-12deg);
+    transform: rotate(7deg);
 
     z-index: 3;
 
-    opacity: .95;
+    opacity: .68;
 
     text-transform: uppercase;
 
-    background: rgba(5, 25, 27, .28);
+    background: transparent;
 
-    box-shadow:
-        inset 0 0 0 4px rgba(255, 255, 255, .18),
-        0 0 8px rgba(0, 0, 0, .65),
-        0 0 14px rgba(255, 255, 255, .20);
-
-    text-shadow:
-        0 2px 4px rgba(0, 0, 0, .9);
+    /* léger aspect imprimé */
+    filter: contrast(.85);
 }
 
+/* Cercle extérieur irrégulier */
 .tampon-voyage::before {
     content: "";
 
     position: absolute;
-    inset: 6px;
+    inset: 2px;
 
     border: 2px dashed rgba(255, 255, 255, .85);
     border-radius: 50%;
+
+    transform: rotate(-3deg);
+
+    opacity: .85;
+}
+
+/* Deuxième cercle très léger */
+.tampon-voyage::after {
+    content: "";
+
+    position: absolute;
+    inset: 7px;
+
+    border: 1px dotted rgba(255, 255, 255, .55);
+    border-radius: 50%;
+
+    transform: rotate(4deg);
+
+    opacity: .75;
 }
 
 .tampon-avion {
-    font-size: 56px;
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 48px;
     line-height: 1;
+
     margin-bottom: 5px;
 
     color: white;
 
     transform: rotate(-15deg);
 
-    filter:
-        drop-shadow(0 2px 3px rgba(0, 0, 0, .9));
+    opacity: .82;
+
+    filter: none;
+
+    text-shadow: none;
 }
 
 #tamponDate {
-    max-width: 82px;
-    color: white;
-    font-size: 11px;
-    font-weight: 800;
+    position: relative;
 
-    letter-spacing: 1px;
+    z-index: 2;
+
+    max-width: 82px;
+
+    color: white;
+
+    font-family:
+        "Courier New",
+        "Lucida Console",
+        monospace;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
 
     text-align: center;
     line-height: 1.2;
 
-    text-shadow:
-        0 2px 4px rgba(0, 0, 0, .95);
+    opacity: .78;
+
+    transform: rotate(-1deg);
+
+    text-shadow: none;
 }
 
 .infos-prochain-voyage {
