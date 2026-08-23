@@ -469,9 +469,11 @@ body {
     position: absolute;
     top: 18px;
     right: 18px;
-    width: 145px;
-    height: 145px;
-    z-index: 3;
+    width: 105px;
+    height: 105px;
+    object-fit: contain;
+    z-index: 10;
+    opacity: 1;
     pointer-events: none;
 }
 
