@@ -472,8 +472,6 @@ body {
     width: 145px;
     height: 145px;
     z-index: 3;
-    opacity: .68;
-    transform: rotate(7deg);
     pointer-events: none;
 }
 
