@@ -1,4 +1,4 @@
-const CACHE_NAME = "voyages-44";
+const CACHE_NAME = "voyages-45";
 
 const FILES = [
     "index.html",
@@ -17,7 +17,7 @@ const FILES = [
     "btn-ajouter.png",
     "btn-voyages.png",
     "signet.png",
-    "tampon.png",
+    "tampon.png?v=45",
     "icone-192.png",
     "icone-512.png",
     "manifest.webmanifest"
