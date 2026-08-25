@@ -1,6 +1,7 @@
 {
   "name": "Mes Voyages",
   "short_name": "Voyages",
+  "id": "/Mes_Voyages/",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#071b1d",
